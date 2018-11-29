@@ -5,7 +5,8 @@ class Values extends React.Component {
   constructor(props){
     super(props);
       this.state = {
-        values: []
+        values: [],
+        delete: "localhost:8080/"
     };
   }
      
@@ -26,9 +27,17 @@ class Values extends React.Component {
     console.log("componentDidMount: ", this.state.values);
   }
 
-  
+  handleSubmit = event => {
+    event.preventDefault();
+    this.delete();
+  }
+
 render(){
-  let repos = this.state.values.map((repo) => <li key={repo.id} >< a href={repo.delete} target="_blank">{repo.postableValue}</a><button>delete</button></li>)
+  let repos = this.state.values.map((repo) =><div onSubmit ={this.handleSubmit}><li key={repo.id}>{repo.postableValue}
+  
+  <button type="submit" value="submit">delete</button>
+  
+  </li></div>)
   return(   
     
     <div className="container">

@@ -23,32 +23,15 @@ public class ApiController {
 
 	@Autowired
 	AppDataRepo repo;
-			
-	
-	/*@GetMapping("/allData")
-	public List<AppData> getData() {
-		List<AppData> foundData;
-		foundData = new ArrayList<>();
-		foundData.addAll(repo.findAll());
-		foundData.toArray();
-		
-		return foundData;
-	}*/
-	
+
 	@GetMapping("/allData")
 	public List<AppData> getData() {
 		List<AppData> foundData;
 		foundData = new ArrayList<>();
 		foundData.addAll(repo.findAll());
 		foundData.toArray();
-		
+
 		return foundData;
-	}
-		
-	
-	@GetMapping("/apiData")
-	public String[] index() {
-		return new String[] { "value1", "value2", "value3" };
 	}
 
 	@PostMapping("/postData")
@@ -59,17 +42,16 @@ public class ApiController {
 	}
 
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<AppData> deleteData(@PathVariable(value="id") Integer id) {
-	
+	public ResponseEntity<AppData> deleteData(@PathVariable(value = "id") Integer id) {
+
 		Optional<AppData> data = repo.findById(id);
-		
+
 		if (data == null) {
 			return ResponseEntity.notFound().header("AppData", "noting found").build();
-		}else {
+		} else {
 			repo.deleteById(id);
 		}
 		return ResponseEntity.ok().build();
 	}
-	
-	
+
 }
