@@ -36,8 +36,9 @@ public class ApiController {
 
 	@PostMapping("/postData")
 	public ResponseEntity<AppData> postData(@RequestBody AppData data) {
-		System.out.println("post successful");
+		
 		AppData createdPost = repo.save(data);
+		System.out.println("post successful");
 		return ResponseEntity.ok(createdPost);
 	}
 

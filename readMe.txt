@@ -1,0 +1,1 @@
+my entent was to rewrite my app once i got my cobled together version working but had trouble with react. i have the paths written but the react isnt using the post or delete but they can still be reached thru postman

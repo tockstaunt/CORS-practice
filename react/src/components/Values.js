@@ -6,7 +6,7 @@ class Values extends React.Component {
     super(props);
       this.state = {
         values: [],
-        delete: "localhost:8080/"
+        delete: "localhost:8080/api/delete/"
     };
   }
      
@@ -33,11 +33,11 @@ class Values extends React.Component {
   }
 
 render(){
-  let repos = this.state.values.map((repo) =><div onSubmit ={this.handleSubmit}><li key={repo.id}>{repo.postableValue}
+  let repos = this.state.values.map((repo) =><li key={repo.id}>{repo.postableValue}
   
-  <button type="submit" value="submit">delete</button>
+  <a href={"localhost:8080/api/delete/" + repo.id}> <button >delete</button></a>
   
-  </li></div>)
+  </li>)
   return(   
     
     <div className="container">
